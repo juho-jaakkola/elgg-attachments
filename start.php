@@ -156,6 +156,7 @@ function attachments_live_search($hook, $type, $return, $params) {
 		$vars = array(
 			'entity' => $entity,
 			'use_hover' => false,
+			'use_link' => false,
 			'class' => 'elgg-autocomplete-item',
 		);
 		$output = elgg_view('attachments/view', $vars);

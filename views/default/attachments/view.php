@@ -5,10 +5,11 @@
 
 $entity = elgg_extract('entity', $vars);
 $parent = elgg_extract('parent', $vars);
+$use_link = elgg_extract('use_link', $vars, true);
 
 $owner = $entity->getOwnerEntity();
 
-$icon = elgg_view_entity_icon($owner, 'tiny');
+$icon = elgg_view_entity_icon($owner, 'tiny', $vars);
 
 $date = elgg_view_friendly_time($entity->time_created);
 
@@ -16,10 +17,13 @@ $subtitle = "$owner->name $date";
 
 $subtype = elgg_echo("item:object:{$entity->getSubtype()}");
 
-$title = elgg_view('output/url', array(
-	'href' => $entity->getURL(),
-	'text' => "<h4>{$subtype}: $entity->title</h4>",
-));
+$title = "<h4>{$subtype}: $entity->title</h4>";
+if ($use_link) {
+	$title = elgg_view('output/url', array(
+		'href' => $entity->getURL(),
+		'text' => "<h4>{$subtype}: $entity->title</h4>",
+	));
+}
 
 $metadata = '';
 if (!elgg_in_context('widgets') && $parent && $parent->canEdit()) {

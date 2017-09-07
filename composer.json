@@ -1,0 +1,8 @@
+{
+	"name": "juho-jaakkola/elgg-attachments",
+	"type": "elgg-plugin",
+	"license": "GPL-2.0",
+	"extra": {
+		"installer-name": "attachments"
+	}
+}
